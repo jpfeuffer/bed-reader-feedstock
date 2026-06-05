@@ -1,5 +1,5 @@
 {% set name = "bed-reader" %}
-{% set version = "1.0.6" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/fastlmm/bed-reader/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 1442e7ae2a1581a99622cbbe57b9c02b91e1cb1b6231fe0c47eb97805e66c2d0
+  sha256: 5eb1764b795d1c52ce9895dc876161fd02c2a98c409a14e6e8df9716da945138
 
 build:
   number: 0
@@ -32,7 +32,8 @@ requirements:
   run:
     - python
     # Versions taken from pyproject.toml
-    - numpy >=1.13.3
+    - numpy >=1.13.3  # [py<314]
+    - numpy >=2.3.5   # [py>=314]
     - pooch >=1.5.0
     # Note: leaving out scipy for 1.0 as it's only used in one optional feature.
     # May be included as a default dependency in future releases.
